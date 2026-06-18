@@ -3,23 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#080c0a">
+<meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Portfolio — Developer</title>
 <style>
 :root {
-  --bg: #080c0a;
-  --surface: #0e1410;
-  --surface2: #131a14;
-  --green: #00e5a0;
-  --green2: #00c47a;
-  --green-dim: rgba(0,229,160,.12);
-  --green-border: rgba(0,229,160,.2);
-  --text: #e8f0eb;
-  --muted: #7a9480;
-  --muted2: #4a6050;
-  --border: rgba(255,255,255,.07);
+  --bg: #f7f8fc;
+  --white: #ffffff;
+  --c1: #df1c2d;
+  --c2: #c91665;
+  --c3: #9a3986;
+  --c4: #614b8c;
+  --c5: #2f4858;
+  --c6: #354e78;
+  --grad: linear-gradient(135deg, #df1c2d 0%, #c91665 30%, #9a3986 60%, #614b8c 80%, #354e78 100%);
+  --grad-soft: linear-gradient(135deg, rgba(223,28,45,.1) 0%, rgba(154,57,134,.08) 50%, rgba(53,78,120,.06) 100%);
+  --text: #1a1830;
+  --muted: #6b7280;
+  --muted2: #9ca3af;
+  --border: #e5e7eb;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+  --shadow-hover: 0 8px 32px rgba(154,57,134,.18), 0 2px 8px rgba(0,0,0,.08);
   --safe-top: env(safe-area-inset-top,0px);
   --safe-bottom: env(safe-area-inset-bottom,0px);
   --safe-left: env(safe-area-inset-left,0px);
@@ -37,7 +42,7 @@ body{
 /* ── NAV ── */
 nav{
   position:fixed;top:0;width:100%;z-index:200;
-  background:rgba(8,12,10,.9);backdrop-filter:blur(16px);
+  background:rgba(255,255,255,.92);backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
   padding:0 max(2rem,var(--safe-left));
@@ -45,47 +50,40 @@ nav{
   padding-top:var(--safe-top);
   display:flex;align-items:center;justify-content:space-between;
   height:calc(64px + var(--safe-top));
+  box-shadow:0 1px 0 var(--border);
 }
 .nav-logo{
-  font-size:.85rem;font-weight:700;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--text);
-  display:flex;align-items:center;gap:.6rem;
+  font-size:.9rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
 }
-.nav-logo-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 8px var(--green);
-  animation:pulse 2s ease-in-out infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{
   color:var(--muted);text-decoration:none;font-size:.82rem;
-  letter-spacing:.08em;text-transform:uppercase;
-  transition:color .2s;padding:.5rem 0;
+  letter-spacing:.06em;text-transform:uppercase;
+  transition:color .2s;padding:.5rem 0;font-weight:500;
 }
-.nav-links a:hover{color:var(--green)}
+.nav-links a:hover{color:var(--c2)}
 .nav-toggle{
   display:none;background:none;border:none;color:var(--text);
-  cursor:pointer;padding:.5rem;border-radius:6px;
+  cursor:pointer;padding:.5rem;border-radius:8px;
   min-width:44px;min-height:44px;
   align-items:center;justify-content:center;transition:background .2s;
 }
-.nav-toggle:active{background:var(--green-dim)}
+.nav-toggle:active{background:var(--grad-soft)}
 .hamburger{display:flex;flex-direction:column;gap:5px;pointer-events:none}
 .hamburger span{
-  display:block;width:20px;height:1.5px;background:var(--text);
-  border-radius:2px;transition:all .3s ease;
+  display:block;width:20px;height:2px;
+  background:var(--text);border-radius:2px;transition:all .3s ease;
 }
-.nav-toggle.active .hamburger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle.active .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.active .hamburger span:nth-child(2){opacity:0;transform:scaleX(0)}
-.nav-toggle.active .hamburger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-
-/* Mobile menu */
+.nav-toggle.active .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .mobile-menu{
   display:none;position:fixed;
   top:calc(64px + var(--safe-top));left:0;right:0;
-  background:rgba(8,12,10,.97);backdrop-filter:blur(20px);
+  background:rgba(255,255,255,.98);backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
   padding:1rem max(1.5rem,var(--safe-left));
   padding-right:max(1.5rem,var(--safe-right));
@@ -96,198 +94,213 @@ nav{
 }
 .mobile-menu.open{display:flex;transform:translateY(0);opacity:1}
 .mobile-menu a{
-  color:var(--muted);text-decoration:none;font-size:.95rem;
-  padding:.85rem 1rem;border-radius:8px;
-  display:flex;align-items:center;gap:.75rem;
-  min-height:44px;transition:all .15s;
-  letter-spacing:.06em;text-transform:uppercase;font-size:.82rem;
+  color:var(--muted);text-decoration:none;font-size:.85rem;
+  padding:.85rem 1rem;border-radius:10px;
+  display:flex;align-items:center;gap:.7rem;
+  min-height:44px;transition:all .15s;font-weight:500;
 }
-.mobile-menu a:active{background:var(--green-dim);color:var(--green)}
+.mobile-menu a:active{background:var(--grad-soft);color:var(--c2)}
 
 /* ── HERO ── */
 #hero{
   min-height:100svh;display:flex;align-items:center;
   padding:0 max(2rem,var(--safe-left));
   padding-top:calc(80px + var(--safe-top));
-  padding-bottom:calc(4rem + var(--safe-bottom));
-  position:relative;overflow:hidden;
+  padding-bottom:calc(5rem + var(--safe-bottom));
+  position:relative;overflow:hidden;background:var(--white);
 }
-.hero-bg{
-  position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 50% at 70% 50%,rgba(0,229,160,.07) 0%,transparent 70%),
-    radial-gradient(ellipse 40% 30% at 20% 80%,rgba(0,229,160,.04) 0%,transparent 60%);
-}
-.hero-grid{
-  position:absolute;inset:0;pointer-events:none;
-  background-image:
-    linear-gradient(var(--border) 1px,transparent 1px),
-    linear-gradient(90deg,var(--border) 1px,transparent 1px);
-  background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 80% 80% at 70% 50%,black 30%,transparent 100%);
-  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 70% 50%,black 30%,transparent 100%);
-  opacity:.4;
-}
+.hero-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12}
+.shape1{width:500px;height:500px;top:-100px;right:-100px;background:radial-gradient(circle,#df1c2d,#c91665)}
+.shape2{width:400px;height:400px;bottom:-50px;right:20%;background:radial-gradient(circle,#9a3986,#614b8c)}
+.shape3{width:300px;height:300px;top:30%;left:-80px;background:radial-gradient(circle,#354e78,#2f4858)}
 .hero-content{position:relative;max-width:700px}
-.hero-tag{
+.hero-badge{
   display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--green);margin-bottom:1.8rem;
-  border:1px solid var(--green-border);
-  padding:.4rem 1rem;border-radius:2px;
-  background:var(--green-dim);
+  font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--c2);margin-bottom:2rem;padding:.45rem 1.1rem;
+  border-radius:30px;background:rgba(201,22,101,.08);
+  border:1px solid rgba(201,22,101,.2);font-weight:600;
 }
-.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green)}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c2)}
 h1.hero-title{
-  font-size:clamp(2.4rem,7vw,5rem);font-weight:800;
-  line-height:1.05;letter-spacing:-.02em;margin-bottom:1.4rem;
-  word-break:keep-all;
+  font-size:clamp(2.4rem,7vw,5rem);font-weight:900;
+  line-height:1.05;letter-spacing:-.03em;margin-bottom:1.4rem;
+  word-break:keep-all;color:var(--text);
 }
-h1.hero-title .line2{
-  background:linear-gradient(90deg,var(--green),#00ffc8);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
+h1.hero-title .grad{
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
 }
 .hero-sub{
   font-size:clamp(.95rem,2.2vw,1.1rem);color:var(--muted);
-  max-width:480px;margin-bottom:2.5rem;line-height:1.8;word-break:keep-all;
+  max-width:480px;margin-bottom:2.5rem;line-height:1.9;word-break:keep-all;
 }
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
 .btn{
-  padding:.85rem 2rem;border-radius:3px;font-size:.85rem;font-weight:600;
+  padding:.85rem 2rem;border-radius:10px;font-size:.88rem;font-weight:700;
   text-decoration:none;transition:all .25s;cursor:pointer;border:none;
   min-height:48px;display:inline-flex;align-items:center;justify-content:center;
-  letter-spacing:.08em;text-transform:uppercase;
-  user-select:none;-webkit-user-select:none;
+  letter-spacing:.04em;user-select:none;-webkit-user-select:none;
 }
-.btn-primary{background:var(--green);color:#080c0a}
-.btn-primary:hover{background:#00ffc8;box-shadow:0 0 24px rgba(0,229,160,.4)}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 4px 16px rgba(201,22,101,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,22,101,.4)}
 .btn-primary:active{transform:scale(.97)}
-.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
-.btn-outline:hover{border-color:var(--green);color:var(--green)}
+.btn-outline{background:transparent;color:var(--c5);border:1.5px solid var(--border)}
+.btn-outline:hover{border-color:var(--c3);color:var(--c3)}
 .btn-outline:active{transform:scale(.97)}
 .hero-scroll{
   position:absolute;bottom:2.5rem;left:max(2rem,var(--safe-left));
   display:flex;align-items:center;gap:.8rem;
-  font-size:.72rem;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;
+  font-size:.7rem;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;
 }
-.scroll-line{width:40px;height:1px;background:var(--muted2)}
-
-/* ── SECTION BASE ── */
-.section-wrap{padding:6rem max(2rem,var(--safe-left));max-width:1200px;margin:0 auto}
-.section-wrap{padding-left:max(2rem,var(--safe-left));padding-right:max(2rem,var(--safe-right))}
-.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem}
-.section-label{
-  font-size:.72rem;color:var(--green);letter-spacing:.2em;
-  text-transform:uppercase;margin-bottom:.6rem;
-  display:flex;align-items:center;gap:.5rem;
-}
-.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--green)}
-.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}
-.section-count{font-size:.8rem;color:var(--muted);letter-spacing:.08em;border:1px solid var(--border);padding:.4rem .9rem;border-radius:2px}
-
-/* ── PROJECT CARDS ── */
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.project-card{
-  background:var(--bg);display:flex;flex-direction:column;
-  transition:background .3s;cursor:default;
-  opacity:0;transform:translateY(20px);
-}
-.project-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .5s ease,background .3s}
-.project-card:hover{background:var(--surface)}
-.card-preview{
-  width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;
-  background:var(--surface2);
-  display:flex;align-items:center;justify-content:center;
-}
-/* Unique gradient per card */
-.card-preview.p1{background:linear-gradient(135deg,#0e2018 0%,#0a2a1a 40%,#00291a 100%)}
-.card-preview.p2{background:linear-gradient(135deg,#0f1a2e 0%,#0a1525 40%,#071020 100%)}
-.card-preview.p3{background:linear-gradient(135deg,#1a0e20 0%,#150a25 40%,#100720 100%)}
-.card-preview.p4{background:linear-gradient(135deg,#1a1000 0%,#201500 40%,#1a1000 100%)}
-.card-preview.p5{background:linear-gradient(135deg,#001a1a 0%,#002020 40%,#001515 100%)}
-.card-preview.p6{background:linear-gradient(135deg,#1a0010 0%,#200015 40%,#150010 100%)}
-.card-preview.p7{background:linear-gradient(135deg,#0a1a0a 0%,#0e200e 40%,#081508 100%)}
-.preview-icon{font-size:3rem;opacity:.6;filter:saturate(.5)}
-.card-preview .overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 40%,rgba(8,12,10,.8) 100%);
-}
-.card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;gap:1rem;border-top:1px solid var(--border)}
-.card-category{
-  font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--green);display:flex;align-items:center;gap:.4rem;
-}
-.card-category::before{content:'';width:12px;height:1px;background:var(--green)}
-.card-title{font-size:1.05rem;font-weight:700;color:var(--text);letter-spacing:-.01em}
-.card-desc{font-size:.83rem;color:var(--muted);flex:1;line-height:1.7;word-break:keep-all}
-.card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.6rem;margin-top:.2rem}
-.tags{display:flex;flex-wrap:wrap;gap:.35rem}
-.tag{
-  font-size:.68rem;padding:.22rem .6rem;border-radius:2px;
-  background:transparent;color:var(--muted);
-  border:1px solid var(--muted2);letter-spacing:.04em;
-}
-.card-link{
-  font-size:.72rem;color:var(--green);letter-spacing:.1em;
-  text-transform:uppercase;text-decoration:none;
-  display:flex;align-items:center;gap:.3rem;white-space:nowrap;
-  opacity:0;transition:opacity .2s;
-}
-.project-card:hover .card-link{opacity:1}
-.card-link::after{content:'→'}
-
-/* ── SKILLS ── */
-.skills-outer{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border)}
-.skill-card{
-  background:var(--surface);padding:2rem 1.8rem;
-  transition:background .25s;
-  opacity:0;transform:translateY(12px);
-}
-.skill-card.visible{opacity:1;transform:translateY(0);transition:opacity .4s ease,transform .4s ease,background .25s}
-.skill-card:hover{background:var(--surface2)}
-.skill-num{font-size:2.2rem;font-weight:800;color:var(--green);letter-spacing:-.03em;line-height:1;margin-bottom:.6rem}
-.skill-category{font-size:.7rem;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem}
-.skill-list{font-size:.83rem;color:var(--muted);line-height:2}
+.scroll-line{width:36px;height:1px;background:linear-gradient(90deg,var(--c1),var(--c4))}
 
 /* ── STATS ── */
 .stats-bar{
-  display:flex;align-items:stretch;flex-wrap:wrap;
+  background:var(--white);
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  display:flex;flex-wrap:wrap;
 }
 .stat-item{
-  flex:1;min-width:140px;padding:2.5rem 2rem;
+  flex:1;min-width:130px;padding:2.2rem 2rem;
   border-right:1px solid var(--border);
-  display:flex;flex-direction:column;gap:.4rem;
 }
 .stat-item:last-child{border-right:none}
-.stat-num{font-size:2.5rem;font-weight:800;color:var(--green);letter-spacing:-.03em;line-height:1}
-.stat-label{font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.stat-num{
+  font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:.3rem;
+}
+.stat-label{font-size:.72rem;color:var(--muted2);letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+
+/* ── SECTION ── */
+.section-wrap{padding:6rem max(2rem,var(--safe-left));max-width:1200px;margin:0 auto}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem}
+.section-label{
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:700;margin-bottom:.5rem;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.02em;line-height:1.1;color:var(--text)}
+.section-count{
+  font-size:.75rem;color:var(--muted);letter-spacing:.08em;
+  border:1.5px solid var(--border);padding:.4rem .9rem;
+  border-radius:20px;font-weight:500;
+}
+
+/* ── PROJECT CARDS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.project-card{
+  background:var(--white);border-radius:16px;
+  border:1px solid var(--border);overflow:hidden;
+  box-shadow:var(--shadow);transition:all .3s ease;
+  display:flex;flex-direction:column;
+  opacity:0;transform:translateY(24px);
+}
+.project-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s,transform .5s,box-shadow .3s,border-color .3s}
+.project-card:hover{box-shadow:var(--shadow-hover);border-color:rgba(154,57,134,.2);transform:translateY(-4px)}
+.card-preview{
+  width:100%;aspect-ratio:16/9;display:flex;
+  align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.card-preview.p1{background:linear-gradient(135deg,#fff0f0,#ffe0eb)}
+.card-preview.p2{background:linear-gradient(135deg,#f0f0ff,#e8e0ff)}
+.card-preview.p3{background:linear-gradient(135deg,#fff0f8,#fce8ff)}
+.card-preview.p4{background:linear-gradient(135deg,#f0f4ff,#e8ecff)}
+.card-preview.p5{background:linear-gradient(135deg,#f0fff8,#e0f8ef)}
+.card-preview.p6{background:linear-gradient(135deg,#fffaf0,#fff0e0)}
+.card-preview.p7{background:linear-gradient(135deg,#f4f0ff,#ede8ff)}
+.card-preview.p8{background:linear-gradient(135deg,#f0f8ff,#e0f0ff)}
+.card-preview.p9{background:linear-gradient(135deg,#fff4f0,#ffeae0)}
+.preview-icon{font-size:3.5rem;line-height:1;z-index:1}
+.preview-stripe{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    45deg,transparent,transparent 20px,
+    rgba(0,0,0,.025) 20px,rgba(0,0,0,.025) 21px
+  );
+}
+.card-body{padding:1.4rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:.8rem}
+.card-category{
+  font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.card-title{font-size:1.05rem;font-weight:800;color:var(--text);letter-spacing:-.01em}
+.card-desc{font-size:.83rem;color:var(--muted);flex:1;line-height:1.75;word-break:keep-all}
+.card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:.3rem;padding-top:.8rem;border-top:1px solid var(--border)}
+.tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.tag{
+  font-size:.67rem;padding:.22rem .6rem;border-radius:20px;
+  background:var(--bg);color:var(--muted);
+  border:1px solid var(--border);font-weight:500;
+}
+.card-link{
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;display:flex;align-items:center;gap:.3rem;
+  white-space:nowrap;opacity:0;transition:opacity .2s;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.project-card:hover .card-link{opacity:1}
+.card-link::after{content:'→';-webkit-text-fill-color:var(--c2)}
+
+/* ── SKILLS ── */
+.skills-bg{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.5rem}
+.skill-card{
+  background:var(--white);border:1px solid var(--border);border-radius:14px;
+  padding:1.8rem 1.6rem;box-shadow:var(--shadow);
+  transition:all .25s;
+  opacity:0;transform:translateY(12px);
+}
+.skill-card.visible{opacity:1;transform:translateY(0);transition:opacity .4s,transform .4s,box-shadow .25s}
+.skill-card:hover{box-shadow:var(--shadow-hover);border-color:rgba(154,57,134,.15);transform:translateY(-2px)}
+.skill-num{
+  font-size:2rem;font-weight:900;letter-spacing:-.03em;line-height:1;
+  margin-bottom:.6rem;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.skill-category{font-size:.7rem;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;font-weight:600}
+.skill-list{font-size:.85rem;color:var(--muted);line-height:2.1}
 
 /* ── CONTACT ── */
 .contact-inner{
-  border:1px solid var(--border);border-radius:4px;
-  padding:4rem 3rem;text-align:center;
-  background:linear-gradient(135deg,rgba(0,229,160,.06) 0%,transparent 60%);
-  position:relative;overflow:hidden;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:20px;padding:4rem 3rem;text-align:center;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
 .contact-inner::before{
-  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
-  background:radial-gradient(circle at 50% 50%,rgba(0,229,160,.04) 0%,transparent 60%);
-  pointer-events:none;
+  content:'';position:absolute;inset:0;
+  background:var(--grad-soft);pointer-events:none;
 }
-.contact-inner h3{font-size:clamp(1.4rem,4vw,2rem);font-weight:800;margin-bottom:.8rem;letter-spacing:-.01em}
+.contact-inner h3{
+  font-size:clamp(1.4rem,4vw,2rem);font-weight:900;
+  margin-bottom:.8rem;letter-spacing:-.02em;
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
 .contact-inner p{color:var(--muted);margin-bottom:2.5rem;word-break:keep-all}
 .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .contact-link{
   display:flex;align-items:center;gap:.6rem;
-  padding:.85rem 1.8rem;border-radius:3px;border:1px solid var(--border);
-  color:var(--text);text-decoration:none;font-size:.83rem;
+  padding:.85rem 1.8rem;border-radius:10px;
+  border:1.5px solid var(--border);color:var(--text);
+  text-decoration:none;font-size:.85rem;font-weight:500;
   transition:all .25s;min-height:48px;white-space:nowrap;
-  letter-spacing:.05em;
+  background:var(--white);position:relative;
 }
-.contact-link:hover{border-color:var(--green);background:var(--green-dim);color:var(--green)}
+.contact-link:hover{
+  border-color:var(--c2);color:var(--c2);
+  box-shadow:0 4px 16px rgba(201,22,101,.15);
+  transform:translateY(-1px);
+}
 .contact-link:active{transform:scale(.97)}
 
 /* ── FOOTER ── */
@@ -297,13 +310,17 @@ footer{
   padding-right:max(2rem,var(--safe-right));
   padding-bottom:calc(1.8rem + var(--safe-bottom));
   border-top:1px solid var(--border);
-  font-size:.75rem;color:var(--muted2);letter-spacing:.05em;
+  font-size:.75rem;color:var(--muted2);
+  background:var(--white);
 }
-.footer-dot{display:flex;align-items:center;gap:.5rem;color:var(--muted2)}
-.footer-dot::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+.footer-avail{
+  display:flex;align-items:center;gap:.5rem;color:var(--muted);font-weight:500;
+}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:pulse2 2s ease-in-out infinite}
+@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.5}}
 
 /* ── DIVIDER ── */
-.divider{height:1px;background:var(--border);margin:0}
+.divider{height:1px;background:var(--border)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
@@ -313,23 +330,23 @@ footer{
   nav{padding:0 1.2rem;padding-top:var(--safe-top)}
   .nav-links{display:none}
   .nav-toggle{display:inline-flex}
-  .hero-content{max-width:100%}
   .section-wrap{padding:4rem 1.2rem}
-  .projects-grid{grid-template-columns:1fr}
+  .section-header{flex-direction:column;align-items:flex-start}
+  .projects-grid{grid-template-columns:1fr;gap:1rem}
   .skills-grid{grid-template-columns:1fr 1fr}
   .contact-inner{padding:2.5rem 1.5rem}
   .contact-links{flex-direction:column;align-items:stretch}
   .contact-link{justify-content:center}
   .stat-item{padding:1.8rem 1.4rem}
-  footer{flex-direction:column;align-items:flex-start;gap:.6rem}
+  footer{flex-direction:column;align-items:flex-start;gap:.5rem}
   .hero-scroll{display:none}
-  .section-header{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:400px){
   .skills-grid{grid-template-columns:1fr}
   .hero-btns{flex-direction:column;align-items:flex-start}
   .btn{width:100%}
 }
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   .project-card,.skill-card{opacity:1;transform:none}
@@ -340,10 +357,7 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <span class="nav-logo-dot"></span>
-    DEV.FOLIO
-  </div>
+  <div class="nav-logo">DEV.FOLIO</div>
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
     <li><a href="#works">Works</a></li>
@@ -355,8 +369,7 @@ footer{
   </button>
 </nav>
 
-<!-- Mobile menu -->
-<ul class="mobile-menu" id="mobileMenu" aria-label="모바일 메뉴">
+<ul class="mobile-menu" id="mobileMenu">
   <li><a href="#hero">🏠 Home</a></li>
   <li><a href="#works">🗂 Works</a></li>
   <li><a href="#skills">⚡ Skills</a></li>
@@ -365,13 +378,16 @@ footer{
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-shapes">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+  </div>
   <div class="hero-content">
-    <div class="hero-tag">Full Stack Developer</div>
+    <div class="hero-badge">Full Stack Developer</div>
     <h1 class="hero-title">
       Creative<br>
-      <span class="line2" id="typingText"></span><span style="color:var(--green);animation:blink .7s infinite;display:inline">|</span>
+      <span class="grad" id="typingText"></span><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:blink .7s infinite;display:inline">|</span>
     </h1>
     <p class="hero-sub">웹, 모바일, AI를 아우르는 풀스택 개발자입니다.<br>사용자 경험을 중심으로 창의적인 솔루션을 만들어갑니다.</p>
     <div class="hero-btns">
@@ -385,25 +401,23 @@ footer{
   </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item">
-    <span class="stat-num">7+</span>
-    <span class="stat-label">Projects Built</span>
+    <div class="stat-num">9+</div>
+    <div class="stat-label">Projects</div>
   </div>
   <div class="stat-item">
-    <span class="stat-num">3+</span>
-    <span class="stat-label">Platforms</span>
+    <div class="stat-num">3+</div>
+    <div class="stat-label">Platforms</div>
   </div>
   <div class="stat-item">
-    <span class="stat-num">100%</span>
-    <span class="stat-label">Passion</span>
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Passion</div>
   </div>
   <div class="stat-item">
-    <span class="stat-num">∞</span>
-    <span class="stat-label">Curiosity</span>
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Curiosity</div>
   </div>
 </div>
 
@@ -414,24 +428,21 @@ footer{
       <div class="section-label">Portfolio</div>
       <h2 class="section-title">Selected Works</h2>
     </div>
-    <span class="section-count">07 Projects</span>
+    <span class="section-count">09 Projects</span>
   </div>
   <div class="projects-grid">
 
     <div class="project-card">
       <div class="card-preview p1">
+        <div class="preview-stripe"></div>
         <span class="preview-icon">🧠</span>
-        <div class="overlay"></div>
       </div>
       <div class="card-body">
         <div class="card-category">Web Application</div>
         <div class="card-title">MindRhythm</div>
-        <p class="card-desc">바이오리듬 & 감정 인텔리전스 웹앱. Chart.js 기반 시각화로 개인의 신체·감성·지성 주기를 분석하고 오늘의 상태를 리포트합니다.</p>
+        <p class="card-desc">바이오리듬 & 감정 인텔리전스 웹앱. Chart.js 기반 시각화로 신체·감성·지성 주기를 분석하고 오늘의 상태를 리포트합니다.</p>
         <div class="card-footer">
-          <div class="tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Chart.js</span>
-          </div>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Chart.js</span></div>
           <a href="#" class="card-link">View More</a>
         </div>
       </div>
@@ -439,18 +450,15 @@ footer{
 
     <div class="project-card">
       <div class="card-preview p2">
+        <div class="preview-stripe"></div>
         <span class="preview-icon">🎮</span>
-        <div class="overlay"></div>
       </div>
       <div class="card-body">
         <div class="card-category">Mobile Game</div>
         <div class="card-title">Tetris</div>
-        <p class="card-desc">Flutter로 구현한 클래식 테트리스 모바일 게임. 부드러운 애니메이션과 레벨 시스템, 최고 점수 저장 기능을 갖춘 완성형 게임입니다.</p>
+        <p class="card-desc">Flutter로 구현한 클래식 테트리스 모바일 게임. 부드러운 애니메이션, 레벨 시스템, 최고 점수 저장 기능을 갖춘 완성형 게임입니다.</p>
         <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Flutter</span>
-            <span class="tag">Dart</span>
-          </div>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span></div>
           <a href="#" class="card-link">View More</a>
         </div>
       </div>
@@ -458,18 +466,15 @@ footer{
 
     <div class="project-card">
       <div class="card-preview p3">
+        <div class="preview-stripe"></div>
         <span class="preview-icon">🤖</span>
-        <div class="overlay"></div>
       </div>
       <div class="card-body">
         <div class="card-category">AI / Backend</div>
         <div class="card-title">AI Chatbot</div>
         <p class="card-desc">GPT-4o-mini 기반 한국어 AI 챗봇. 자연스러운 대화 흐름과 컨텍스트 유지 기능으로 스마트한 응답을 제공합니다.</p>
         <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">OpenAI</span>
-          </div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">OpenAI</span></div>
           <a href="#" class="card-link">View More</a>
         </div>
       </div>
@@ -477,18 +482,15 @@ footer{
 
     <div class="project-card">
       <div class="card-preview p4">
+        <div class="preview-stripe"></div>
         <span class="preview-icon">📸</span>
-        <div class="overlay"></div>
       </div>
       <div class="card-body">
         <div class="card-category">Mobile App</div>
         <div class="card-title">PictureDiary</div>
         <p class="card-desc">사진과 글을 함께 기록하는 모바일 일기 앱. 날짜별 타임라인과 갤러리 뷰로 소중한 순간을 감성적으로 보관합니다.</p>
         <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Flutter</span>
-            <span class="tag">Dart</span>
-          </div>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span></div>
           <a href="#" class="card-link">View More</a>
         </div>
       </div>
@@ -496,18 +498,47 @@ footer{
 
     <div class="project-card">
       <div class="card-preview p7">
+        <div class="preview-stripe"></div>
         <span class="preview-icon">📝</span>
-        <div class="overlay"></div>
       </div>
       <div class="card-body">
         <div class="card-category">Productivity App</div>
         <div class="card-title">Memo</div>
-        <p class="card-desc">빠르고 직관적인 메모 앱. 마크다운 지원과 태그 분류, 검색 기능으로 아이디어를 즉시 기록하고 체계적으로 관리할 수 있습니다.</p>
+        <p class="card-desc">빠르고 직관적인 메모 앱. 마크다운 지원, 태그 분류, 검색 기능으로 아이디어를 즉시 기록하고 체계적으로 관리합니다.</p>
         <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Flutter</span>
-            <span class="tag">SQLite</span>
-          </div>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">SQLite</span></div>
+          <a href="#" class="card-link">View More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-preview p8">
+        <div class="preview-stripe"></div>
+        <span class="preview-icon">🏠</span>
+      </div>
+      <div class="card-body">
+        <div class="card-category">AI / Mobile App</div>
+        <div class="card-title">부동산 사주 앱</div>
+        <p class="card-desc">사주 명리학과 부동산 투자를 결합한 AI 분석 앱. 생년월일 기반으로 투자 적합 지역과 타이밍을 사주 이론으로 풀어냅니다.</p>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">AI</span></div>
+          <a href="#" class="card-link">View More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-preview p9">
+        <div class="preview-stripe"></div>
+        <span class="preview-icon">🥗</span>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Health & Fitness App</div>
+        <div class="card-title">다이어트 앱</div>
+        <p class="card-desc">식단 기록과 운동 관리를 하나로 합친 헬스케어 앱. 칼로리 트래킹, 목표 체중 설정, 주간 리포트로 건강한 습관을 만들어갑니다.</p>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span></div>
           <a href="#" class="card-link">View More</a>
         </div>
       </div>
@@ -515,18 +546,15 @@ footer{
 
     <div class="project-card">
       <div class="card-preview p5">
+        <div class="preview-stripe"></div>
         <span class="preview-icon">🏡</span>
-        <div class="overlay"></div>
       </div>
       <div class="card-body">
         <div class="card-category">Content / Design</div>
         <div class="card-title">Real Estate Ebook</div>
         <p class="card-desc">부동산 사주 분석을 담은 디지털 이북. 전통 사주 이론을 현대 부동산 투자에 접목한 독창적인 콘텐츠 프로젝트입니다.</p>
         <div class="card-footer">
-          <div class="tags">
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">Design</span>
-          </div>
+          <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">Design</span></div>
           <a href="#" class="card-link">View More</a>
         </div>
       </div>
@@ -534,19 +562,15 @@ footer{
 
     <div class="project-card">
       <div class="card-preview p6">
+        <div class="preview-stripe"></div>
         <span class="preview-icon">🛒</span>
-        <div class="overlay"></div>
       </div>
       <div class="card-body">
         <div class="card-category">E-Commerce</div>
         <div class="card-title">Coupang Clone</div>
         <p class="card-desc">국내 최대 이커머스 쿠팡의 클론 프로젝트. 상품 목록, 검색, 장바구니, 결제 흐름까지 핵심 기능을 완성도 높게 구현했습니다.</p>
         <div class="card-footer">
-          <div class="tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JS</span>
-          </div>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
           <a href="#" class="card-link">View More</a>
         </div>
       </div>
@@ -558,7 +582,7 @@ footer{
 <div class="divider"></div>
 
 <!-- SKILLS -->
-<div class="skills-outer" id="skills">
+<div class="skills-bg" id="skills">
   <div class="section-wrap">
     <div class="section-header">
       <div>
@@ -566,8 +590,6 @@ footer{
         <h2 class="section-title">기술 스택</h2>
       </div>
     </div>
-  </div>
-  <div style="max-width:1200px;margin:0 auto;padding:0 max(2rem,var(--safe-left))">
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-num">01</div>
@@ -597,11 +619,10 @@ footer{
       <div class="skill-card">
         <div class="skill-num">06</div>
         <div class="skill-category">Interests</div>
-        <div class="skill-list">AI Integration<br>Game Dev<br>E-Commerce<br>Productivity</div>
+        <div class="skill-list">AI Integration<br>Health Tech<br>Real Estate AI<br>E-Commerce</div>
       </div>
     </div>
   </div>
-  <div style="height:4rem"></div>
 </div>
 
 <div class="divider"></div>
@@ -626,13 +647,16 @@ footer{
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-dot">Available for work</div>
+  <div class="footer-avail">
+    <span class="avail-dot"></span>
+    Available for work
+  </div>
   <span>© 2026 Developer Portfolio</span>
 </footer>
 
 <script>
 // ── Typing ──
-const phrases=['풀스택 개발자','AI 애호가','Flutter 개발자'];
+const phrases=['풀스택 개발자','AI 애호가','Flutter 개발자','앱 메이커'];
 let pi=0,ci=0,del=false;
 const el=document.getElementById('typingText');
 function type(){
@@ -646,11 +670,11 @@ function type(){
 type();
 
 // ── Scroll reveal ──
-const obs=new IntersectionObserver((entries)=>{
+const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       const idx=Array.from(e.target.parentElement.children).indexOf(e.target);
-      setTimeout(()=>e.target.classList.add('visible'),idx*90);
+      setTimeout(()=>e.target.classList.add('visible'),idx*80);
       obs.unobserve(e.target);
     }
   });
