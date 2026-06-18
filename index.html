@@ -10,6 +10,9 @@
 <meta property="og:description" content="웹, 모바일, AI를 아우르는 풀스택 개발자 유주현의 포트폴리오입니다.">
 <meta property="og:url" content="https://luzysal76.github.io/portfolio/">
 <meta property="og:type" content="website">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>유주현 | Full Stack Developer</title>
 <style>
 :root {
@@ -761,6 +764,15 @@ document.addEventListener('click',e=>{
     document.body.style.overflow='';
   }
 });
+
+// PWA Service Worker 등록
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/portfolio/sw.js')
+      .then(r => console.log('SW registered:', r.scope))
+      .catch(e => console.log('SW error:', e));
+  });
+}
 </script>
 </body>
 </html>
