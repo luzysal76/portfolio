@@ -5,8 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>Portfolio — Developer</title>
+<meta name="description" content="유주현 — 풀스택 개발자 포트폴리오. Flutter, Python, OpenAI, Web 개발">
+<meta property="og:title" content="유주현 | Full Stack Developer Portfolio">
+<meta property="og:description" content="웹, 모바일, AI를 아우르는 풀스택 개발자 유주현의 포트폴리오입니다.">
+<meta property="og:url" content="https://luzysal76.github.io/portfolio/">
+<meta property="og:type" content="website">
+<title>유주현 | Full Stack Developer</title>
 <style>
 :root {
   --bg: #f7f8fc;
@@ -17,8 +21,8 @@
   --c4: #614b8c;
   --c5: #2f4858;
   --c6: #354e78;
-  --grad: linear-gradient(135deg, #df1c2d 0%, #c91665 30%, #9a3986 60%, #614b8c 80%, #354e78 100%);
-  --grad-soft: linear-gradient(135deg, rgba(223,28,45,.1) 0%, rgba(154,57,134,.08) 50%, rgba(53,78,120,.06) 100%);
+  --grad: linear-gradient(135deg, #df1c2d 0%, #c91665 28%, #9a3986 58%, #614b8c 80%, #354e78 100%);
+  --grad-soft: linear-gradient(135deg, rgba(223,28,45,.08) 0%, rgba(154,57,134,.06) 50%, rgba(53,78,120,.05) 100%);
   --text: #1a1830;
   --muted: #6b7280;
   --muted2: #9ca3af;
@@ -42,7 +46,7 @@ body{
 /* ── NAV ── */
 nav{
   position:fixed;top:0;width:100%;z-index:200;
-  background:rgba(255,255,255,.92);backdrop-filter:blur(16px);
+  background:rgba(255,255,255,.93);backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
   padding:0 max(2rem,var(--safe-left));
@@ -50,19 +54,16 @@ nav{
   padding-top:var(--safe-top);
   display:flex;align-items:center;justify-content:space-between;
   height:calc(64px + var(--safe-top));
-  box-shadow:0 1px 0 var(--border);
 }
 .nav-logo{
-  font-size:.9rem;font-weight:800;letter-spacing:.12em;
-  text-transform:uppercase;
-  background:var(--grad);-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;background-clip:text;
+  font-size:.88rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{
   color:var(--muted);text-decoration:none;font-size:.82rem;
-  letter-spacing:.06em;text-transform:uppercase;
-  transition:color .2s;padding:.5rem 0;font-weight:500;
+  letter-spacing:.05em;text-transform:uppercase;font-weight:500;
+  transition:color .2s;padding:.5rem 0;
 }
 .nav-links a:hover{color:var(--c2)}
 .nav-toggle{
@@ -73,10 +74,7 @@ nav{
 }
 .nav-toggle:active{background:var(--grad-soft)}
 .hamburger{display:flex;flex-direction:column;gap:5px;pointer-events:none}
-.hamburger span{
-  display:block;width:20px;height:2px;
-  background:var(--text);border-radius:2px;transition:all .3s ease;
-}
+.hamburger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
 .nav-toggle.active .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.active .hamburger span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-toggle.active .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -89,15 +87,15 @@ nav{
   padding-right:max(1.5rem,var(--safe-right));
   flex-direction:column;gap:.2rem;
   transform:translateY(-8px);opacity:0;
-  transition:transform .25s ease,opacity .25s ease;
+  transition:transform .25s,opacity .25s;
   z-index:190;list-style:none;
 }
 .mobile-menu.open{display:flex;transform:translateY(0);opacity:1}
 .mobile-menu a{
-  color:var(--muted);text-decoration:none;font-size:.85rem;
-  padding:.85rem 1rem;border-radius:10px;
-  display:flex;align-items:center;gap:.7rem;
-  min-height:44px;transition:all .15s;font-weight:500;
+  color:var(--muted);text-decoration:none;font-size:.82rem;
+  padding:.85rem 1rem;border-radius:10px;display:flex;align-items:center;
+  gap:.7rem;min-height:44px;transition:all .15s;
+  font-weight:500;letter-spacing:.05em;text-transform:uppercase;
 }
 .mobile-menu a:active{background:var(--grad-soft);color:var(--c2)}
 
@@ -111,30 +109,32 @@ nav{
 }
 .hero-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:.12}
-.shape1{width:500px;height:500px;top:-100px;right:-100px;background:radial-gradient(circle,#df1c2d,#c91665)}
-.shape2{width:400px;height:400px;bottom:-50px;right:20%;background:radial-gradient(circle,#9a3986,#614b8c)}
-.shape3{width:300px;height:300px;top:30%;left:-80px;background:radial-gradient(circle,#354e78,#2f4858)}
-.hero-content{position:relative;max-width:700px}
+.shape1{width:500px;height:500px;top:-100px;right:-80px;background:radial-gradient(circle,#df1c2d,#c91665)}
+.shape2{width:380px;height:380px;bottom:-30px;right:22%;background:radial-gradient(circle,#9a3986,#614b8c)}
+.shape3{width:280px;height:280px;top:35%;left:-60px;background:radial-gradient(circle,#354e78,#2f4858)}
+.hero-content{position:relative;max-width:720px}
 .hero-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--c2);margin-bottom:2rem;padding:.45rem 1.1rem;
-  border-radius:30px;background:rgba(201,22,101,.08);
-  border:1px solid rgba(201,22,101,.2);font-weight:600;
+  display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--c2);
+  margin-bottom:2rem;padding:.42rem 1.1rem;border-radius:30px;
+  background:rgba(201,22,101,.07);border:1px solid rgba(201,22,101,.2);font-weight:600;
 }
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c2)}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c2);flex-shrink:0}
+.hero-name{
+  font-size:clamp(1rem,2vw,1.15rem);color:var(--muted);font-weight:500;
+  margin-bottom:.5rem;letter-spacing:.02em;
+}
 h1.hero-title{
   font-size:clamp(2.4rem,7vw,5rem);font-weight:900;
-  line-height:1.05;letter-spacing:-.03em;margin-bottom:1.4rem;
-  word-break:keep-all;color:var(--text);
+  line-height:1.05;letter-spacing:-.03em;margin-bottom:1.4rem;word-break:keep-all;
 }
 h1.hero-title .grad{
   background:var(--grad);-webkit-background-clip:text;
   -webkit-text-fill-color:transparent;background-clip:text;
 }
 .hero-sub{
-  font-size:clamp(.95rem,2.2vw,1.1rem);color:var(--muted);
-  max-width:480px;margin-bottom:2.5rem;line-height:1.9;word-break:keep-all;
+  font-size:clamp(.95rem,2.2vw,1.05rem);color:var(--muted);
+  max-width:500px;margin-bottom:2.5rem;line-height:1.9;word-break:keep-all;
 }
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
 .btn{
@@ -143,8 +143,8 @@ h1.hero-title .grad{
   min-height:48px;display:inline-flex;align-items:center;justify-content:center;
   letter-spacing:.04em;user-select:none;-webkit-user-select:none;
 }
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 4px 16px rgba(201,22,101,.3)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,22,101,.4)}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 4px 16px rgba(201,22,101,.28)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,22,101,.38)}
 .btn-primary:active{transform:scale(.97)}
 .btn-outline{background:transparent;color:var(--c5);border:1.5px solid var(--border)}
 .btn-outline:hover{border-color:var(--c3);color:var(--c3)}
@@ -156,55 +156,79 @@ h1.hero-title .grad{
 }
 .scroll-line{width:36px;height:1px;background:linear-gradient(90deg,var(--c1),var(--c4))}
 
+/* ── ABOUT ── */
+#about{background:var(--white);border-top:1px solid var(--border)}
+.about-inner{
+  max-width:1200px;margin:0 auto;
+  padding:5rem max(2rem,var(--safe-left));
+  padding-right:max(2rem,var(--safe-right));
+  display:grid;grid-template-columns:auto 1fr;gap:4rem;align-items:center;
+}
+.about-avatar{
+  width:140px;height:140px;border-radius:50%;flex-shrink:0;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.8rem;font-weight:900;color:#fff;
+  letter-spacing:-.02em;box-shadow:0 8px 32px rgba(201,22,101,.25);
+  position:relative;
+}
+.about-avatar::after{
+  content:'';position:absolute;inset:-3px;border-radius:50%;
+  background:var(--grad);z-index:-1;opacity:.3;filter:blur(8px);
+}
+.about-text{}
+.about-text .section-label{margin-bottom:.5rem}
+.about-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:900;letter-spacing:-.02em;margin-bottom:1.2rem}
+.about-desc{color:var(--muted);line-height:1.9;font-size:.95rem;max-width:580px;word-break:keep-all;margin-bottom:1.5rem}
+.about-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.about-chip{
+  font-size:.75rem;padding:.3rem .8rem;border-radius:20px;
+  border:1.5px solid var(--border);color:var(--muted);font-weight:500;
+}
+
 /* ── STATS ── */
 .stats-bar{
-  background:var(--white);
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
   display:flex;flex-wrap:wrap;
 }
-.stat-item{
-  flex:1;min-width:130px;padding:2.2rem 2rem;
-  border-right:1px solid var(--border);
-}
+.stat-item{flex:1;min-width:130px;padding:2.2rem 2rem;border-right:1px solid var(--border)}
 .stat-item:last-child{border-right:none}
 .stat-num{
   font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1;
   background:var(--grad);-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;background-clip:text;
-  margin-bottom:.3rem;
+  -webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;
 }
 .stat-label{font-size:.72rem;color:var(--muted2);letter-spacing:.08em;text-transform:uppercase;font-weight:500}
 
 /* ── SECTION ── */
-.section-wrap{padding:6rem max(2rem,var(--safe-left));max-width:1200px;margin:0 auto}
+.section-wrap{
+  padding:6rem max(2rem,var(--safe-left));
+  padding-right:max(2rem,var(--safe-right));
+  max-width:1200px;margin:0 auto;
+}
 .section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem}
 .section-label{
-  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
-  font-weight:700;margin-bottom:.5rem;
-  background:var(--grad);-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;background-clip:text;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.02em;line-height:1.1;color:var(--text)}
 .section-count{
   font-size:.75rem;color:var(--muted);letter-spacing:.08em;
-  border:1.5px solid var(--border);padding:.4rem .9rem;
-  border-radius:20px;font-weight:500;
+  border:1.5px solid var(--border);padding:.4rem .9rem;border-radius:20px;font-weight:500;
 }
 
 /* ── PROJECT CARDS ── */
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .project-card{
-  background:var(--white);border-radius:16px;
-  border:1px solid var(--border);overflow:hidden;
-  box-shadow:var(--shadow);transition:all .3s ease;
+  background:var(--white);border-radius:16px;border:1px solid var(--border);
+  overflow:hidden;box-shadow:var(--shadow);transition:all .3s;
   display:flex;flex-direction:column;
   opacity:0;transform:translateY(24px);
 }
 .project-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s,transform .5s,box-shadow .3s,border-color .3s}
 .project-card:hover{box-shadow:var(--shadow-hover);border-color:rgba(154,57,134,.2);transform:translateY(-4px)}
 .card-preview{
-  width:100%;aspect-ratio:16/9;display:flex;
-  align-items:center;justify-content:center;
+  width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
   position:relative;overflow:hidden;
 }
 .card-preview.p1{background:linear-gradient(135deg,#fff0f0,#ffe0eb)}
@@ -219,21 +243,33 @@ h1.hero-title .grad{
 .preview-icon{font-size:3.5rem;line-height:1;z-index:1}
 .preview-stripe{
   position:absolute;inset:0;
-  background:repeating-linear-gradient(
-    45deg,transparent,transparent 20px,
-    rgba(0,0,0,.025) 20px,rgba(0,0,0,.025) 21px
-  );
+  background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(0,0,0,.02) 20px,rgba(0,0,0,.02) 21px);
 }
-.card-body{padding:1.4rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:.8rem}
+.card-body{padding:1.4rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:.75rem}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
 .card-category{
-  font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:700;
-  background:var(--grad);-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;background-clip:text;
+  font-size:.67rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.badge-private{
+  font-size:.62rem;padding:.18rem .55rem;border-radius:20px;
+  background:rgba(107,114,128,.08);color:var(--muted2);
+  border:1px solid var(--border);font-weight:600;letter-spacing:.04em;
+  white-space:nowrap;
+}
+.badge-public{
+  font-size:.62rem;padding:.18rem .55rem;border-radius:20px;
+  background:rgba(34,197,94,.08);color:#16a34a;
+  border:1px solid rgba(34,197,94,.2);font-weight:600;letter-spacing:.04em;
+  white-space:nowrap;
 }
 .card-title{font-size:1.05rem;font-weight:800;color:var(--text);letter-spacing:-.01em}
 .card-desc{font-size:.83rem;color:var(--muted);flex:1;line-height:1.75;word-break:keep-all}
-.card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:.3rem;padding-top:.8rem;border-top:1px solid var(--border)}
+.card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.5rem;margin-top:.3rem;
+  padding-top:.8rem;border-top:1px solid var(--border);
+}
 .tags{display:flex;flex-wrap:wrap;gap:.3rem}
 .tag{
   font-size:.67rem;padding:.22rem .6rem;border-radius:20px;
@@ -241,13 +277,14 @@ h1.hero-title .grad{
   border:1px solid var(--border);font-weight:500;
 }
 .card-link{
-  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
   text-decoration:none;display:flex;align-items:center;gap:.3rem;
-  white-space:nowrap;opacity:0;transition:opacity .2s;
+  white-space:nowrap;
   background:var(--grad);-webkit-background-clip:text;
   -webkit-text-fill-color:transparent;background-clip:text;
+  opacity:.7;transition:opacity .2s;
 }
-.project-card:hover .card-link{opacity:1}
+.card-link:hover,.project-card:hover .card-link{opacity:1}
 .card-link::after{content:'→';-webkit-text-fill-color:var(--c2)}
 
 /* ── SKILLS ── */
@@ -255,52 +292,48 @@ h1.hero-title .grad{
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.5rem}
 .skill-card{
   background:var(--white);border:1px solid var(--border);border-radius:14px;
-  padding:1.8rem 1.6rem;box-shadow:var(--shadow);
-  transition:all .25s;
+  padding:1.8rem 1.6rem;box-shadow:var(--shadow);transition:all .25s;
   opacity:0;transform:translateY(12px);
 }
 .skill-card.visible{opacity:1;transform:translateY(0);transition:opacity .4s,transform .4s,box-shadow .25s}
 .skill-card:hover{box-shadow:var(--shadow-hover);border-color:rgba(154,57,134,.15);transform:translateY(-2px)}
 .skill-num{
-  font-size:2rem;font-weight:900;letter-spacing:-.03em;line-height:1;
-  margin-bottom:.6rem;
-  background:var(--grad);-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;background-clip:text;
+  font-size:2rem;font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:.6rem;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .skill-category{font-size:.7rem;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;font-weight:600}
 .skill-list{font-size:.85rem;color:var(--muted);line-height:2.1}
 
 /* ── CONTACT ── */
 .contact-inner{
-  background:var(--white);border:1px solid var(--border);
-  border-radius:20px;padding:4rem 3rem;text-align:center;
-  box-shadow:var(--shadow);position:relative;overflow:hidden;
+  background:var(--white);border:1px solid var(--border);border-radius:20px;
+  padding:4rem 3rem;text-align:center;box-shadow:var(--shadow);
+  position:relative;overflow:hidden;
 }
-.contact-inner::before{
-  content:'';position:absolute;inset:0;
-  background:var(--grad-soft);pointer-events:none;
+.contact-inner::before{content:'';position:absolute;inset:0;background:var(--grad-soft);pointer-events:none}
+.contact-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:#16a34a;margin-bottom:1.5rem;padding:.38rem 1rem;
+  border-radius:30px;background:rgba(34,197,94,.08);
+  border:1px solid rgba(34,197,94,.2);font-weight:600;
 }
+.contact-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse2 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.4}}
 .contact-inner h3{
-  font-size:clamp(1.4rem,4vw,2rem);font-weight:900;
-  margin-bottom:.8rem;letter-spacing:-.02em;
-  background:var(--grad);-webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;background-clip:text;
+  font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:.8rem;letter-spacing:-.02em;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.contact-inner p{color:var(--muted);margin-bottom:2.5rem;word-break:keep-all}
+.contact-inner p{color:var(--muted);margin-bottom:2.5rem;word-break:keep-all;max-width:400px;margin-left:auto;margin-right:auto}
 .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .contact-link{
   display:flex;align-items:center;gap:.6rem;
-  padding:.85rem 1.8rem;border-radius:10px;
-  border:1.5px solid var(--border);color:var(--text);
-  text-decoration:none;font-size:.85rem;font-weight:500;
+  padding:.85rem 1.8rem;border-radius:10px;border:1.5px solid var(--border);
+  color:var(--text);text-decoration:none;font-size:.85rem;font-weight:500;
   transition:all .25s;min-height:48px;white-space:nowrap;
   background:var(--white);position:relative;
 }
-.contact-link:hover{
-  border-color:var(--c2);color:var(--c2);
-  box-shadow:0 4px 16px rgba(201,22,101,.15);
-  transform:translateY(-1px);
-}
+.contact-link:hover{border-color:var(--c2);color:var(--c2);box-shadow:0 4px 16px rgba(201,22,101,.15);transform:translateY(-1px)}
 .contact-link:active{transform:scale(.97)}
 
 /* ── FOOTER ── */
@@ -310,21 +343,20 @@ footer{
   padding-right:max(2rem,var(--safe-right));
   padding-bottom:calc(1.8rem + var(--safe-bottom));
   border-top:1px solid var(--border);
-  font-size:.75rem;color:var(--muted2);
-  background:var(--white);
+  font-size:.75rem;color:var(--muted2);background:var(--white);
 }
-.footer-avail{
-  display:flex;align-items:center;gap:.5rem;color:var(--muted);font-weight:500;
-}
-.avail-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:pulse2 2s ease-in-out infinite}
-@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.5}}
+.footer-avail{display:flex;align-items:center;gap:.5rem;color:var(--muted);font-weight:500}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:pulse2 2s ease-in-out infinite;flex-shrink:0}
 
-/* ── DIVIDER ── */
 .divider{height:1px;background:var(--border)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   .projects-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .about-inner{grid-template-columns:1fr;gap:2rem;padding:3.5rem 1.2rem}
+  .about-avatar{width:100px;height:100px;font-size:2rem}
 }
 @media(max-width:640px){
   nav{padding:0 1.2rem;padding-top:var(--safe-top)}
@@ -357,9 +389,10 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">DEV.FOLIO</div>
+  <div class="nav-logo">유주현 · DEV</div>
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#works">Works</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -371,6 +404,7 @@ footer{
 
 <ul class="mobile-menu" id="mobileMenu">
   <li><a href="#hero">🏠 Home</a></li>
+  <li><a href="#about">👤 About</a></li>
   <li><a href="#works">🗂 Works</a></li>
   <li><a href="#skills">⚡ Skills</a></li>
   <li><a href="#contact">✉️ Contact</a></li>
@@ -385,19 +419,43 @@ footer{
   </div>
   <div class="hero-content">
     <div class="hero-badge">Full Stack Developer</div>
+    <p class="hero-name">안녕하세요, 유주현입니다 👋</p>
     <h1 class="hero-title">
       Creative<br>
       <span class="grad" id="typingText"></span><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:blink .7s infinite;display:inline">|</span>
     </h1>
-    <p class="hero-sub">웹, 모바일, AI를 아우르는 풀스택 개발자입니다.<br>사용자 경험을 중심으로 창의적인 솔루션을 만들어갑니다.</p>
+    <p class="hero-sub">웹, 모바일, AI를 아우르는 풀스택 개발자입니다.<br>사용자 중심의 창의적인 솔루션으로 아이디어를 현실로 만들어갑니다.</p>
     <div class="hero-btns">
-      <a href="#works" class="btn btn-primary">Selected Works</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      <a href="#works" class="btn btn-primary">프로젝트 보기</a>
+      <a href="#contact" class="btn btn-outline">연락하기</a>
     </div>
   </div>
   <div class="hero-scroll">
     <span class="scroll-line"></span>
     Scroll to explore
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-avatar">유주</div>
+    <div class="about-text">
+      <div class="section-label">About Me</div>
+      <h2 class="about-title">저는 유주현입니다</h2>
+      <p class="about-desc">
+        Flutter, Python, Web 기술을 활용해 다양한 플랫폼에서 실용적인 앱을 만드는 풀스택 개발자입니다.
+        단순히 동작하는 코드가 아닌, 사용자가 실제로 즐겨 쓰는 서비스를 만드는 것에 관심이 많습니다.
+        AI 통합, 헬스케어, 부동산 테크, 이커머스 등 다양한 도메인에서 프로젝트를 진행했습니다.
+      </p>
+      <div class="about-chips">
+        <span class="about-chip">🚀 풀스택 개발</span>
+        <span class="about-chip">📱 Flutter 앱</span>
+        <span class="about-chip">🤖 AI 통합</span>
+        <span class="about-chip">🎨 UI/UX 설계</span>
+        <span class="about-chip">💡 아이디어를 코드로</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -412,14 +470,16 @@ footer{
     <div class="stat-label">Platforms</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">100%</div>
-    <div class="stat-label">Passion</div>
+    <div class="stat-num">2개</div>
+    <div class="stat-label">Public Repos</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">∞</div>
     <div class="stat-label">Curiosity</div>
   </div>
 </div>
+
+<div class="divider"></div>
 
 <!-- WORKS -->
 <div class="section-wrap" id="works">
@@ -433,145 +493,138 @@ footer{
   <div class="projects-grid">
 
     <div class="project-card">
-      <div class="card-preview p1">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">🧠</span>
-      </div>
+      <div class="card-preview p1"><div class="preview-stripe"></div><span class="preview-icon">🧠</span></div>
       <div class="card-body">
-        <div class="card-category">Web Application</div>
+        <div class="card-top">
+          <div class="card-category">Web Application</div>
+          <span class="badge-private">Private</span>
+        </div>
         <div class="card-title">MindRhythm</div>
         <p class="card-desc">바이오리듬 & 감정 인텔리전스 웹앱. Chart.js 기반 시각화로 신체·감성·지성 주기를 분석하고 오늘의 상태를 리포트합니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">JavaScript</span><span class="tag">Chart.js</span></div>
-          <a href="#" class="card-link">View More</a>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="card-preview p2">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">🎮</span>
-      </div>
+      <div class="card-preview p2"><div class="preview-stripe"></div><span class="preview-icon">🎮</span></div>
       <div class="card-body">
-        <div class="card-category">Mobile Game</div>
+        <div class="card-top">
+          <div class="card-category">Mobile Game</div>
+          <span class="badge-private">Private</span>
+        </div>
         <div class="card-title">Tetris</div>
         <p class="card-desc">Flutter로 구현한 클래식 테트리스 모바일 게임. 부드러운 애니메이션, 레벨 시스템, 최고 점수 저장 기능을 갖춘 완성형 게임입니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span></div>
-          <a href="#" class="card-link">View More</a>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="card-preview p3">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">🤖</span>
-      </div>
+      <div class="card-preview p3"><div class="preview-stripe"></div><span class="preview-icon">🤖</span></div>
       <div class="card-body">
-        <div class="card-category">AI / Backend</div>
+        <div class="card-top">
+          <div class="card-category">AI / Backend</div>
+          <span class="badge-private">Private</span>
+        </div>
         <div class="card-title">AI Chatbot</div>
         <p class="card-desc">GPT-4o-mini 기반 한국어 AI 챗봇. 자연스러운 대화 흐름과 컨텍스트 유지 기능으로 스마트한 응답을 제공합니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">Python</span><span class="tag">OpenAI</span></div>
-          <a href="#" class="card-link">View More</a>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="card-preview p4">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">📸</span>
-      </div>
+      <div class="card-preview p4"><div class="preview-stripe"></div><span class="preview-icon">📸</span></div>
       <div class="card-body">
-        <div class="card-category">Mobile App</div>
+        <div class="card-top">
+          <div class="card-category">Mobile App</div>
+          <span class="badge-private">Private</span>
+        </div>
         <div class="card-title">PictureDiary</div>
         <p class="card-desc">사진과 글을 함께 기록하는 모바일 일기 앱. 날짜별 타임라인과 갤러리 뷰로 소중한 순간을 감성적으로 보관합니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span></div>
-          <a href="#" class="card-link">View More</a>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="card-preview p7">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">📝</span>
-      </div>
+      <div class="card-preview p7"><div class="preview-stripe"></div><span class="preview-icon">📝</span></div>
       <div class="card-body">
-        <div class="card-category">Productivity App</div>
+        <div class="card-top">
+          <div class="card-category">Productivity App</div>
+          <span class="badge-private">Private</span>
+        </div>
         <div class="card-title">Memo</div>
         <p class="card-desc">빠르고 직관적인 메모 앱. 마크다운 지원, 태그 분류, 검색 기능으로 아이디어를 즉시 기록하고 체계적으로 관리합니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">Flutter</span><span class="tag">SQLite</span></div>
-          <a href="#" class="card-link">View More</a>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="card-preview p8">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">🏠</span>
-      </div>
+      <div class="card-preview p8"><div class="preview-stripe"></div><span class="preview-icon">🏠</span></div>
       <div class="card-body">
-        <div class="card-category">AI / Mobile App</div>
+        <div class="card-top">
+          <div class="card-category">AI / Mobile App</div>
+          <span class="badge-public">GitHub ↗</span>
+        </div>
         <div class="card-title">부동산 사주 앱</div>
         <p class="card-desc">사주 명리학과 부동산 투자를 결합한 AI 분석 앱. 생년월일 기반으로 투자 적합 지역과 타이밍을 사주 이론으로 풀어냅니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">Flutter</span><span class="tag">AI</span></div>
-          <a href="#" class="card-link">View More</a>
+          <a href="https://github.com/luzysal76/realestate-saju" target="_blank" rel="noopener" class="card-link">View Repo</a>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="card-preview p9">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">🥗</span>
-      </div>
+      <div class="card-preview p9"><div class="preview-stripe"></div><span class="preview-icon">🥗</span></div>
       <div class="card-body">
-        <div class="card-category">Health & Fitness App</div>
+        <div class="card-top">
+          <div class="card-category">Health &amp; Fitness App</div>
+          <span class="badge-public">GitHub ↗</span>
+        </div>
         <div class="card-title">다이어트 앱</div>
         <p class="card-desc">식단 기록과 운동 관리를 하나로 합친 헬스케어 앱. 칼로리 트래킹, 목표 체중 설정, 주간 리포트로 건강한 습관을 만들어갑니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span></div>
-          <a href="#" class="card-link">View More</a>
+          <a href="https://github.com/luzysal76/calorie-burner" target="_blank" rel="noopener" class="card-link">View Repo</a>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="card-preview p5">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">🏡</span>
-      </div>
+      <div class="card-preview p5"><div class="preview-stripe"></div><span class="preview-icon">🏡</span></div>
       <div class="card-body">
-        <div class="card-category">Content / Design</div>
+        <div class="card-top">
+          <div class="card-category">Content / Design</div>
+          <span class="badge-private">Private</span>
+        </div>
         <div class="card-title">Real Estate Ebook</div>
         <p class="card-desc">부동산 사주 분석을 담은 디지털 이북. 전통 사주 이론을 현대 부동산 투자에 접목한 독창적인 콘텐츠 프로젝트입니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">Design</span></div>
-          <a href="#" class="card-link">View More</a>
         </div>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="card-preview p6">
-        <div class="preview-stripe"></div>
-        <span class="preview-icon">🛒</span>
-      </div>
+      <div class="card-preview p6"><div class="preview-stripe"></div><span class="preview-icon">🛒</span></div>
       <div class="card-body">
-        <div class="card-category">E-Commerce</div>
+        <div class="card-top">
+          <div class="card-category">E-Commerce</div>
+          <span class="badge-private">Private</span>
+        </div>
         <div class="card-title">Coupang Clone</div>
         <p class="card-desc">국내 최대 이커머스 쿠팡의 클론 프로젝트. 상품 목록, 검색, 장바구니, 결제 흐름까지 핵심 기능을 완성도 높게 구현했습니다.</p>
         <div class="card-footer">
           <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
-          <a href="#" class="card-link">View More</a>
         </div>
       </div>
     </div>
@@ -594,7 +647,7 @@ footer{
       <div class="skill-card">
         <div class="skill-num">01</div>
         <div class="skill-category">Frontend</div>
-        <div class="skill-list">HTML · CSS<br>JavaScript<br>Chart.js<br>반응형 디자인</div>
+        <div class="skill-list">HTML · CSS<br>JavaScript<br>Chart.js · 반응형</div>
       </div>
       <div class="skill-card">
         <div class="skill-num">02</div>
@@ -604,7 +657,7 @@ footer{
       <div class="skill-card">
         <div class="skill-num">03</div>
         <div class="skill-category">Backend / AI</div>
-        <div class="skill-list">Python<br>OpenAI API<br>GPT-4o-mini<br>REST API</div>
+        <div class="skill-list">Python<br>OpenAI API<br>GPT-4o-mini · REST</div>
       </div>
       <div class="skill-card">
         <div class="skill-num">04</div>
@@ -614,12 +667,12 @@ footer{
       <div class="skill-card">
         <div class="skill-num">05</div>
         <div class="skill-category">Tools</div>
-        <div class="skill-list">Git · GitHub<br>VS Code<br>Android Studio<br>Firebase</div>
+        <div class="skill-list">Git · GitHub<br>VS Code · Firebase<br>Android Studio</div>
       </div>
       <div class="skill-card">
         <div class="skill-num">06</div>
         <div class="skill-category">Interests</div>
-        <div class="skill-list">AI Integration<br>Health Tech<br>Real Estate AI<br>E-Commerce</div>
+        <div class="skill-list">AI Integration<br>Health Tech<br>Real Estate AI</div>
       </div>
     </div>
   </div>
@@ -632,8 +685,9 @@ footer{
   <div class="section-label">Get In Touch</div>
   <h2 class="section-title" style="margin-bottom:2.5rem">연락하기</h2>
   <div class="contact-inner">
+    <div class="contact-badge">현재 채용 · 협업 문의 받는 중</div>
     <h3>함께 만들어볼까요? 👋</h3>
-    <p>새로운 프로젝트, 협업 제안, 또는 단순한 인사도 환영합니다.</p>
+    <p>새로운 프로젝트, 협업 제안, 채용 문의 모두 환영합니다. 편하게 연락 주세요!</p>
     <div class="contact-links">
       <a href="mailto:luzysal76@gmail.com" class="contact-link">
         <span>✉️</span> luzysal76@gmail.com
@@ -651,19 +705,19 @@ footer{
     <span class="avail-dot"></span>
     Available for work
   </div>
-  <span>© 2026 Developer Portfolio</span>
+  <span>© 2026 유주현 · Developer Portfolio</span>
 </footer>
 
 <script>
-// ── Typing ──
-const phrases=['풀스택 개발자','AI 애호가','Flutter 개발자','앱 메이커'];
+// ── Typing (2 phrases) ──
+const phrases=['풀스택 개발자','Flutter 개발자'];
 let pi=0,ci=0,del=false;
 const el=document.getElementById('typingText');
 function type(){
   const cur=phrases[pi];
   el.textContent=del?cur.slice(0,--ci):cur.slice(0,++ci);
   let d=del?55:95;
-  if(!del&&ci===cur.length){d=2000;del=true}
+  if(!del&&ci===cur.length){d=2200;del=true}
   else if(del&&ci===0){del=false;pi=(pi+1)%phrases.length;d=400}
   setTimeout(type,d);
 }
